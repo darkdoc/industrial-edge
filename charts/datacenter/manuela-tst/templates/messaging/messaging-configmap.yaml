@@ -18,3 +18,4 @@ data:
   TOPIC_VIBRATION: "iot-sensor/sw/vibration"
   TOPIC_LIGHT: "iot-sensor/sw/light"
   ANOMALY_DETECTION_URL: "http://modelmesh-serving.ml-development:8008"
+  ANOMALY_DETECTION_URL_PATH: "/v2/models/better/infer"
