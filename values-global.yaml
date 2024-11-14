@@ -4,7 +4,7 @@ main:
     enabled: true
     clusterGroupChartVersion: 0.9.*
   git:
-    repoUpstreamURL: https://github.com/validatedpatterns/industrial-edge
+    repoUpstreamURL: https://github.com/darkdoc/industrial-edge
 
 global:
   pattern: industrial-edge
@@ -20,7 +20,6 @@ global:
     # type: quay
     # Account and hostname will be set automatically if the type is openshift-internal
     type: openshift-internal
-
   git:
     account: gitea_admin
     #username: PLAINTEXT
