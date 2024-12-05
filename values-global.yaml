@@ -2,7 +2,8 @@ main:
   clusterGroupName: datacenter
   multiSourceConfig:
     enabled: true
-    clusterGroupChartVersion: 0.9.*
+    clusterGroupGitRepoUrl: https://github.com/darkdoc/clustergroup-chart
+    clusterGroupChartGitRevision: uninstall_poc
   git:
     repoUpstreamURL: https://github.com/darkdoc/industrial-edge
 

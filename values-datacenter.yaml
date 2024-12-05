@@ -83,19 +83,25 @@ clusterGroup:
       name: acm
       namespace: open-cluster-management
       project: datacenter
-      chart: acm
-      chartVersion: 0.1.*
+      path: "."
+      chartVersion: uninstall_poc
+      repoURL: https://github.com/darkdoc/acm-chart
       ignoreDifferences:
       - group: internal.open-cluster-management.io
         kind: ManagedClusterInfo
         jsonPointers:
         - /spec/loggingCA
+      annotations:
+        argocd.argoproj.io/sync-wave: "2"
 
     pipelines:
       name: pipelines
       namespace: manuela-ci
       project: datacenter
       path: charts/datacenter/pipelines
+      annotations:
+        argocd.argoproj.io/sync-wave: "10"
+
 
     production-data-lake:
       name: production-data-lake
@@ -115,6 +121,9 @@ clusterGroup:
         kind: ImageStream
         jsonPointers:
         - /spec/tags
+      annotations:
+        argocd.argoproj.io/sync-wave: "10"
+
 
     storage:
       name: storage
@@ -122,6 +131,9 @@ clusterGroup:
       project: datacenter
       chart: openshift-data-foundations
       chartVersion: 0.1.*
+      annotations:
+        argocd.argoproj.io/sync-wave: "2"
+
 
     data-science-cluster:
       name: data-science-cluster
@@ -141,6 +153,9 @@ clusterGroup:
         kind: ImageStream
         jsonPointers:
         - /spec/tags
+      annotations:
+        argocd.argoproj.io/sync-wave: "10"
+
 
     data-science-project:
       name: data-science-project
@@ -160,6 +175,9 @@ clusterGroup:
         kind: ImageStream
         jsonPointers:
         - /spec/tags
+      annotations:
+        argocd.argoproj.io/sync-wave: "10"
+
 
     test:
       name: manuela-test
@@ -168,6 +186,9 @@ clusterGroup:
       path: charts/datacenter/manuela-tst
       extraValueFiles:
         - /overrides/values-test-imagedata.yaml
+      annotations:
+        argocd.argoproj.io/sync-wave: "10"
+
 
     vault:
       name: vault
@@ -175,6 +196,9 @@ clusterGroup:
       project: datacenter
       chart: hashicorp-vault
       chartVersion: 0.1.*
+      annotations:
+        argocd.argoproj.io/sync-wave: "2"
+
 
     secrets-operator:
       name: golang-external-secrets
@@ -182,6 +206,9 @@ clusterGroup:
       project: golang-external-secrets
       chart: golang-external-secrets
       chartVersion: 0.1.*
+      annotations:
+        argocd.argoproj.io/sync-wave: "5"
+
 
 #  To have apps in multiple flavors, use namespaces and use helm overrides as appropriate
 #
